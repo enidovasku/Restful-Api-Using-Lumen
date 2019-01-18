@@ -20,12 +20,12 @@ class BasketItemsController extends Controller
      *         in="query",
      *         description="Name",
      *         required=true,
-     *         @OA\Schema(type="string")
+     *         @OA\Schema(type="integer")
      *     ),
      *      @OA\Parameter(
      *         name="quantity",
      *         in="query",
-     *         description="Description",
+     *         description="Quantity",
      *         required=true,
      *         @OA\Schema(type="integer")
      *     ),
@@ -45,7 +45,7 @@ class BasketItemsController extends Controller
      *     ),        
      *     @OA\Response(
      *         response="200",
-     *         description="Returns some sample category things",
+     *         description="Returns basketItem ",
      *         @OA\JsonContent()
      *     ),
      *     @OA\Response(
@@ -62,7 +62,7 @@ class BasketItemsController extends Controller
        $basketItem->price = $request->price;
        $basketItem->quantity= $request->quantity;
        $basketItem->userId = $request->userId;
-       $basketItem->basketId = Basket::firstOrCreate(['userId' =>$request->userId],
+       $basketItem->basketId = Basket::firstOrCreate(['userId' =>$request->userId,'IsCheckedOut' => 0],
                                 ['IsCheckedOut' => 0])->id;
 
         $basketItem->save();
@@ -75,7 +75,7 @@ class BasketItemsController extends Controller
      *     tags={"Basket"},
      * 
      *      @OA\Parameter(
-     *         name="userId",
+     *         name="id",
      *         in="path",
      *         description="User Id",
      *         required=true,
@@ -84,7 +84,7 @@ class BasketItemsController extends Controller
      *    
      *     @OA\Response(
      *         response="200",
-     *         description="Returns some sample category things",
+     *         description="Returns Basket Items",
      *         @OA\JsonContent()
      *     ),
      *     @OA\Response(

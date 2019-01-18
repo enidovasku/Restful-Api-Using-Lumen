@@ -76,7 +76,7 @@
                 "operationId": "App\\Http\\Controllers\\BasketItemsController::index",
                 "parameters": [
                     {
-                        "name": "userId",
+                        "name": "id",
                         "in": "path",
                         "description": "User Id",
                         "required": true,
