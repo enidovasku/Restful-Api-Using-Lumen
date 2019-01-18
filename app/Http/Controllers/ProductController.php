@@ -79,7 +79,7 @@ class ProductController extends Controller
     public function create(Request $request)
      {
         $product = Product::create($request->all());
-        return response()->json($product, 201);
+        return response()->json($product, 200);
      }
 
      public function show($id)
